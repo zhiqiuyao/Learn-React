@@ -1,0 +1,167 @@
+[
+  {
+    "_id": {
+      "$id": "571ecdabec8b0781768b459b"
+    },
+    "id": "571ecdabec8b0781768b459b",
+    "userName": "masai",
+    "trueName": "masai",
+    "roles": [
+      "1",
+      "2"
+    ],
+    "flag": 1,
+    "flagDes": "不启用",
+    "des": "",
+    "tel": "18366195886",
+    "createTime": "2016-04-26 10:08:43"
+  },
+  {
+    "_id": {
+      "$id": "56f1fda5ec8b076c758b56b3"
+    },
+    "id": "56f1fda5ec8b076c758b56b3",
+    "userName": "yzq",
+    "trueName": "thanos",
+    "roles": [
+      "1",
+      "2"
+    ],
+    "flag": 0,
+    "flagDes": "启用",
+    "des": "",
+    "tel": "15502235960",
+    "createTime": "2016-03-23 10:21:25"
+  },
+  {
+    "_id": {
+      "$id": "56f1f758ec8b07291f8b45dd"
+    },
+    "id": "56f1f758ec8b07291f8b45dd",
+    "userName": "qulei",
+    "trueName": "qulei",
+    "roles": [
+      "1",
+      "2"
+    ],
+    "flag": 0,
+    "flagDes": "启用",
+    "des": "",
+    "tel": "13521060927",
+    "createTime": "2016-03-23 09:54:32"
+  },
+  {
+    "_id": {
+      "$id": "57cfcaf9ec8b078c608b45f5"
+    },
+    "id": "57cfcaf9ec8b078c608b45f5",
+    "userName": "js",
+    "trueName": "dsaf",
+    "roles": [
+      "1",
+      "2"
+    ],
+    "flag": 0,
+    "flagDes": "启用",
+    "des": "",
+    "tel": "18012345678",
+    "createTime": "2016-09-07 16:08:25"
+  },
+  {
+    "_id": {
+      "$id": "57b2bbdeec8b07e41b8b4eb2"
+    },
+    "id": "57b2bbdeec8b07e41b8b4eb2",
+    "userName": "lxf",
+    "trueName": "lxf",
+    "roles": [
+      "1",
+      "2"
+    ],
+    "flag": 0,
+    "flagDes": "启用",
+    "des": "",
+    "tel": "18064076856",
+    "createTime": "2016-08-16 15:08:14"
+  },
+  {
+    "_id": {
+      "$id": "5799c0cdec8b07e41b8b49b9"
+    },
+    "id": "5799c0cdec8b07e41b8b49b9",
+    "userName": "677",
+    "trueName": "677",
+    "roles": [
+      "1"
+    ],
+    "flag": 0,
+    "flagDes": "启用",
+    "des": "677",
+    "tel": "18600000000",
+    "createTime": "2016-07-28 16:22:37"
+  },
+  {
+    "_id": {
+      "$id": "57997e3fec8b07e41b8b491f"
+    },
+    "id": "57997e3fec8b07e41b8b491f",
+    "userName": "zhang",
+    "trueName": "zhan",
+    "roles": [
+      "2"
+    ],
+    "flag": 0,
+    "flagDes": "启用",
+    "des": "测试",
+    "tel": "18610745001",
+    "createTime": "2016-07-28 11:38:39"
+  },
+  {
+    "_id": {
+      "$id": "57996f20ec8b07e41b8b48e2"
+    },
+    "id": "57996f20ec8b07e41b8b48e2",
+    "userName": "daixiongjie",
+    "trueName": "daixiongjie",
+    "roles": [
+      "1"
+    ],
+    "flag": 0,
+    "flagDes": "启用",
+    "des": "",
+    "tel": "18811792793",
+    "createTime": "2016-07-28 10:34:08"
+  },
+  {
+    "_id": {
+      "$id": "57982845ec8b07e41b8b471d"
+    },
+    "id": "57982845ec8b07e41b8b471d",
+    "userName": "7777",
+    "trueName": "6",
+    "roles": [
+      "2"
+    ],
+    "flag": 0,
+    "flagDes": "启用",
+    "des": "",
+    "tel": "15014131406",
+    "createTime": "2016-07-27 11:19:33"
+  },
+  {
+    "_id": {
+      "$id": "57982768ec8b070a4d8b4f66"
+    },
+    "id": "57982768ec8b070a4d8b4f66",
+    "userName": "aaaa",
+    "trueName": "aaa",
+    "roles": [
+      "2"
+    ],
+    "flag": 1,
+    "flagDes": "不启用",
+    "des": "aaa",
+    "tel": "13800000000",
+    "createTime": "2016-07-27 11:15:52"
+  }
+]

@@ -8,10 +8,7 @@ import Nav from './nav';
 class About extends React.Component {
     render() {
         return (
-            <div>
-                <Nav/>
-                <h2>About</h2>
-            </div>
+            <h2>About</h2>
         )
     }
 }

@@ -1,18 +1,38 @@
 import React from 'react';
-import { Nav, NavItem, Topbar, CollapsibleNav, Button } from 'amazeui-react';
+import {Route, Link} from 'react-router';
+import { Nav, NavItem, Topbar, CollapsibleNav } from 'amazeui-react';
 
-class navInstance extends React.Component {
+const NavLink = React.createClass({
+    contextTypes: {
+        router: React.PropTypes.object
+    },
+
+    render: function () {
+        let isActive = this.context.router.isActive(this.props.to, true),
+            className = isActive ? "am-active" : "";
+
+        return (
+            <li className={className}>
+                <Link {...this.props}>
+                    {this.props.children}
+                </Link>
+            </li>
+        );
+    }
+});
+
+class NavInstance extends React.Component {
     render() {
         return (
             <Topbar brand="航盛车云管理后台" toggleNavKey="nav" className="am-topbar-inverse">
                 <CollapsibleNav eventKey="nav">
                     <Nav topbar>
-                        <NavItem href="#/booking">预约信息</NavItem>
-                        <NavItem href="#/brand-manage">品牌管理</NavItem>
-                        <NavItem href="#/provider-manage">4S店管理</NavItem>
-                        <NavItem href="#/car-owner-manage">车主管理</NavItem>
-                        <NavItem href="#/ad-manage">广告管理</NavItem>
-                        <NavItem href="#/admin-manage">管理员管理</NavItem>
+                        <NavLink to="/booking-manage">预约管理</NavLink>
+                        <NavLink to="/brand-manage">品牌管理</NavLink>
+                        <NavLink to="/provider-manage">4S店管理</NavLink>
+                        <NavLink to="/car-owner-manage">车主管理</NavLink>
+                        <NavLink to="/ad-manage">广告管理</NavLink>
+                        <NavLink to="/admin-manage">管理员管理</NavLink>
                     </Nav>
                 </CollapsibleNav>
             </Topbar>
@@ -20,4 +40,4 @@ class navInstance extends React.Component {
     }
 }
 
-export default navInstance
+export default NavInstance

@@ -2,78 +2,117 @@
  * Created by thanos on 9/20/16.
  */
 import React from 'react';
-import Nav from './nav';
 import { Link } from 'react-router';
-import {Table, Button, Breadcrumb, Form, Input, Icon } from 'amazeui-react';
+import axios from 'axios';
+import { Table, Button, Breadcrumb, Form, FormGroup, Input, Icon, Pagination } from 'amazeui-react';
 
-var iconUser = <Icon icon="user" />;
-var iconPwd = <Icon icon="lock" />;
+let iconUser = <Icon icon="user" />;
+let iconPwd = <Icon icon="lock" />;
 
 class AdminManage extends React.Component {
-
+    constructor() {
+        super();
+        this.state = {admins: []};
+    }
+    componentWillMount() {
+        axios.get('/data/admin-manage.json')
+            .then((res) => {
+                this.setState({
+                    admins: res.data
+                })
+            })
+    }
     render() {
         return (
             <div>
-                <Nav/>
-                <section className="am-container">
-
-                    <Table bordered striped responsive>
-                        <thead>
-                        <tr>
-                            <th>帐号</th>
-                            <th>用户名</th>
-                            <th>状态</th>
-                            <th>联系方式</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Amaze UI</td>
-                            <td>admin1</td>
-                            <td>2012-10-01</td>
-                            <th>123456</th>
-                            <th>
-                                <Button amStyle="primary" amSize="sm">详情</Button>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>Amaze UI(Active)</td>
-                            <td>admin2</td>
-                            <td>2012-10-01</td>
-                            <th>123456</th>
-                            <th>
-                                <Link to="/admin-manage/123"><Button amStyle="primary" amSize="sm">详情</Button></Link>
-                            </th>
-                        </tr>
-                        </tbody>
-                    </Table>
-                </section>
+                <Breadcrumb className="am-text-lg">
+                    <Breadcrumb.Item active>管理员管理</Breadcrumb.Item>
+                </Breadcrumb>
+            <Table bordered striped responsive>
+                <thead>
+                <tr>
+                    <th>帐号</th>
+                    <th>用户名</th>
+                    <th>状态</th>
+                    <th>联系方式</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {this.state.admins.map((admin) => {
+                        return (
+                            <tr key={admin.id}>
+                                <td>{admin.userName}</td>
+                                <td>{admin.trueName}</td>
+                                <td>{admin.flagDes}</td>
+                                <td>{admin.tel}</td>
+                                <td>
+                                    <Link to="/admin-manage/123">
+                                        <Button amStyle="primary" amSize="sm">详情</Button>
+                                    </Link>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </Table>
+            <Pagination right>
+                <Pagination.Item disabled href="#">&laquo;</Pagination.Item>
+                <Pagination.Item active>1</Pagination.Item>
+                <Pagination.Item href="#">2</Pagination.Item>
+                <Pagination.Item href="#">3</Pagination.Item>
+                <Pagination.Item href="#">4</Pagination.Item>
+                <Pagination.Item href="#">5</Pagination.Item>
+                <Pagination.Item href="#">&raquo;</Pagination.Item>
+            </Pagination>
             </div>
         )
     }
 }
 
-class Admin extends React.Component {
+
+class AdminDetail extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            admin: {}
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+    componentWillMount() {
+        axios.get('/data/admin-manage.json')
+            .then((res) => {
+                this.setState({
+                    admin: res.data[1]
+                })
+            })
+    }
+
     render() {
         return (
             <div>
-                <Nav/>
-                <section className="am-container">
-                    <Breadcrumb>
-                        <Breadcrumb.Item href="#/admin-manage">管理员管理</Breadcrumb.Item>
-                        <Breadcrumb.Item active>当前用户</Breadcrumb.Item>
-                    </Breadcrumb>
-                    <Form className="am-u-sm-4 am-u-sm-offset-4">
-                        <Input addonBefore={iconUser} placeholder="User Name" />
-                        <Input addonBefore={iconPwd} placeholder="Password" />
-                        <Input type="submit" amStyle="primary" value="提交"
-                               wrapperClassName="am-u-sm-offset-2 am-u-sm-10" />
-                    </Form>
-                </section>
+                <Breadcrumb>
+                    <Breadcrumb.Item href="#/admin-manage">管理员管理</Breadcrumb.Item>
+                    <Breadcrumb.Item active>当前用户</Breadcrumb.Item>
+                </Breadcrumb>
+                <Form horizontal className="am-u-sm-12 am-u-md-6 am-u-md-offset-3">
+                    <Input label="帐号" labelClassName="am-u-sm-3"
+                           wrapperClassName="am-u-sm-9" />
+                    <Input label="用户名" labelClassName="am-u-sm-3"
+                           wrapperClassName="am-u-sm-9" />
+                    <FormGroup>
+                        <Input type="checkbox" label="有回复时邮件通知孤"
+                               wrapperClassName="am-u-sm-offset-3 am-u-sm-9" />
+                    </FormGroup>
+                    <p>用户名{this.state.admin.trueName}</p>
+                    <p>tel:{this.state.admin.tel}</p>
+                    <p>{this.state.value}</p>
+                    <Input type="submit" amStyle="primary" value="提交"
+                           wrapperClassName="am-u-sm-offset-3 am-u-sm-9" />
+                </Form>
             </div>
         )
     }
 }
 
-export { AdminManage, Admin }
+export { AdminManage, AdminDetail }
