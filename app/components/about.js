@@ -2,7 +2,6 @@
  * Created by thanos on 9/20/16.
  */
 import React from 'react';
-import Nav from './nav';
 
 // 关于
 class About extends React.Component {

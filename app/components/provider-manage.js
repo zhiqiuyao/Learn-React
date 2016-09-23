@@ -11,7 +11,7 @@ class ProviderManage extends React.Component {
         super();
         this.state = {providers: []}
     }
-    componentWillMount() {
+    componentDidMount() {
         axios.get('/data/provider-list.json')
             .then((res) => {
                 this.setState({

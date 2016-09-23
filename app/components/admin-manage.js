@@ -14,7 +14,7 @@ class AdminManage extends React.Component {
         super();
         this.state = {admins: []};
     }
-    componentWillMount() {
+    componentDidMount() {
         axios.get('/data/admin-manage.json')
             .then((res) => {
                 this.setState({
@@ -80,7 +80,7 @@ class AdminDetail extends React.Component {
             trueName: ''
         };
     }
-    componentWillMount() {
+    componentDidMount() {
         axios.get('/data/admin-manage.json')
             .then((res) => {
                 const admin = res.data[1];

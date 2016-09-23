@@ -11,7 +11,7 @@ class BookingManage extends React.Component {
         super();
         this.state = {bookings: []};
     }
-    componentWillMount() {
+    componentDidMount() {
         axios.get('/data/booking-list.json')
             .then((res) => {
                 this.setState({
