@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Link} from 'react-router';
-import { Nav, NavItem, Topbar, CollapsibleNav } from 'amazeui-react';
+import { Nav, NavItem, Topbar, CollapsibleNav, Button } from 'amazeui-react';
 
 const NavLink = React.createClass({
     contextTypes: {
@@ -33,6 +33,8 @@ class NavInstance extends React.Component {
                         <NavLink to="/car-owner-manage">车主管理</NavLink>
                         <NavLink to="/ad-manage">广告管理</NavLink>
                         <NavLink to="/admin-manage">管理员管理</NavLink>
+                        <Button amStyle="success" className="am-fr" radius>注册</Button>
+                        <Button amStyle="success" className="am-fr" radius>登录</Button>
                     </Nav>
                 </CollapsibleNav>
             </Topbar>

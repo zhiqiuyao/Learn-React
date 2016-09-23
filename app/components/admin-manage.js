@@ -4,7 +4,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
-import { Table, Button, Breadcrumb, Form, FormGroup, Input, Icon, Pagination } from 'amazeui-react';
+import { Table, Button, Breadcrumb, Form, FormGroup, Input, Icon, Pagination, DateTimeInput } from 'amazeui-react';
 
 let iconUser = <Icon icon="user" />;
 let iconPwd = <Icon icon="lock" />;
@@ -75,39 +75,59 @@ class AdminDetail extends React.Component {
     constructor() {
         super();
         this.state = {
-            admin: {}
+            tel: '',
+            userName: '',
+            trueName: ''
         };
-        this.handleChange = this.handleChange.bind(this);
     }
     componentWillMount() {
         axios.get('/data/admin-manage.json')
             .then((res) => {
+                const admin = res.data[1];
                 this.setState({
-                    admin: res.data[1]
+                    tel: admin.tel,
+                    userName: admin.userName,
+                    trueName: admin.trueName
                 })
             })
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log(e.target.tel.value,e.target.userName.value)
+    }
+    handleChange(e) {
+        console.log(e.target);
+        this.setState({
+            tel: e.target.value
+        })
     }
 
     render() {
         return (
             <div>
-                <Breadcrumb>
+                <Breadcrumb className="am-text-lg">
                     <Breadcrumb.Item href="#/admin-manage">管理员管理</Breadcrumb.Item>
                     <Breadcrumb.Item active>当前用户</Breadcrumb.Item>
                 </Breadcrumb>
-                <Form horizontal className="am-u-sm-12 am-u-md-6 am-u-md-offset-3">
-                    <Input label="帐号" labelClassName="am-u-sm-3"
+                <Form horizontal className="am-u-sm-12 am-u-md-6 am-u-md-offset-3" onSubmit={this.handleSubmit}>
+                    <Input label="帐号" labelClassName="am-u-sm-3" name="userName"
+                           value={this.state.userName} onChange={this.handleChange.bind(this)}
                            wrapperClassName="am-u-sm-9" />
-                    <Input label="用户名" labelClassName="am-u-sm-3"
+                    <Input label="用户名" labelClassName="am-u-sm-3" name="trueName"
+                           value={this.state.trueName} onChange={this.handleChange.bind(this)}
                            wrapperClassName="am-u-sm-9" />
+                    <Input label="手机号" labelClassName="am-u-sm-3" name="tel"
+                           value={this.state.tel} onChange={this.handleChange.bind(this)}
+                           wrapperClassName="am-u-sm-9" />
+
                     <FormGroup>
                         <Input type="checkbox" label="有回复时邮件通知孤"
                                wrapperClassName="am-u-sm-offset-3 am-u-sm-9" />
                     </FormGroup>
-                    <p>用户名{this.state.admin.trueName}</p>
-                    <p>tel:{this.state.admin.tel}</p>
-                    <p>{this.state.value}</p>
-                    <Input type="submit" amStyle="primary" value="提交"
+                    <div>
+                        <DateTimeInput locale="zh_CN"/>
+                    </div>
+                    <Input type="submit" className="am-btn am-btn-primary" value="保存"
                            wrapperClassName="am-u-sm-offset-3 am-u-sm-9" />
                 </Form>
             </div>

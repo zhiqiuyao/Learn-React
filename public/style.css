@@ -1,3 +1,4 @@
-.demo {
-    color: red !important;
+.am-topbar-nav > button {
+    margin-top: 6px;
+    margin-right: 10px;
 }
