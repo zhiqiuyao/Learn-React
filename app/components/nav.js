@@ -1,6 +1,6 @@
 import React from 'react';
-import {Route, Link} from 'react-router';
-import { Nav, NavItem, Topbar, CollapsibleNav, Button } from 'amazeui-react';
+import { Link } from 'react-router';
+import { Nav, Topbar, CollapsibleNav, Button, Dropdown } from 'amazeui-react';
 
 const NavLink = React.createClass({
     contextTypes: {
@@ -21,20 +21,23 @@ const NavLink = React.createClass({
     }
 });
 
-class NavInstance extends React.Component {
+class AdminNav extends React.Component {
     render() {
         return (
             <Topbar brand="航盛车云管理后台" toggleNavKey="nav" className="am-topbar-inverse">
                 <CollapsibleNav eventKey="nav">
                     <Nav topbar>
-                        <NavLink to="/booking-manage">预约管理</NavLink>
-                        <NavLink to="/brand-manage">品牌管理</NavLink>
-                        <NavLink to="/provider-manage">4S店管理</NavLink>
-                        <NavLink to="/car-owner-manage">车主管理</NavLink>
-                        <NavLink to="/ad-manage">广告管理</NavLink>
-                        <NavLink to="/admin-manage">管理员管理</NavLink>
-                        <Button amStyle="success" className="am-fr" radius>注册</Button>
-                        <Button amStyle="success" className="am-fr" radius>登录</Button>
+                        <NavLink to="/admin/booking-manage">预约管理</NavLink>
+                        <NavLink to="/admin/brand-manage">品牌管理</NavLink>
+                        <NavLink to="/admin/provider-manage">4S店管理</NavLink>
+                        <NavLink to="/admin/car-owner-manage">车主管理</NavLink>
+                        <NavLink to="/admin/ad-manage">广告管理</NavLink>
+                        <NavLink to="/admin/admin-manage">管理员管理</NavLink>
+                        <Dropdown title="切换" btnStyle="success">
+                          <Dropdown.Item header>标题</Dropdown.Item>
+                          <Dropdown.Item>航盛后台</Dropdown.Item>
+                          <Dropdown.Item>4S店后台</Dropdown.Item>
+                        </Dropdown>
                     </Nav>
                 </CollapsibleNav>
             </Topbar>
@@ -42,4 +45,26 @@ class NavInstance extends React.Component {
     }
 }
 
-export default NavInstance
+class ProviderNav extends React.Component {
+    render() {
+        return (
+            <Topbar brand="4S店管理后台" toggleNavKey="nav" className="am-topbar-inverse">
+                <CollapsibleNav eventKey="nav">
+                    <Nav topbar>
+                        <NavLink to="/provider/booking-manage">预约管理</NavLink>
+                        <NavLink to="/provider/store-front">店面信息</NavLink>
+                        <NavLink to="/provider/admin-manage">管理员管理</NavLink>
+
+                        <Dropdown title="切换" btnStyle="success">
+                            <Dropdown.Item header>标题</Dropdown.Item>
+                            <Dropdown.Item>航盛后台</Dropdown.Item>
+                            <Dropdown.Item>4S店后台</Dropdown.Item>
+                        </Dropdown>
+                    </Nav>
+                </CollapsibleNav>
+            </Topbar>
+        );
+    }
+}
+
+export {AdminNav, ProviderNav}
