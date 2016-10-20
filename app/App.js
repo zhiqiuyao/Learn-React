@@ -3,6 +3,7 @@ import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 
 import {AdminNav, ProviderNav} from './components/nav';
 
+import Index from './components/index';
 import Home from './components/home';
 import { BookingManage, BookingDetail } from './components/booking';
 import BrandManage from './components/brand-manage';
@@ -11,6 +12,7 @@ import CarOwnerManage from './components/car-owner-manage';
 import AdManage from './components/ad-manage';
 import {AdminManage, AdminDetail} from './components/admin-manage';
 import StoreFront from './components/provider/store-front';
+import AuditProviderInfo from './components/admin/audit-provider-info';
 
 const AdminWrapper = (props) => {
 	return (
@@ -38,6 +40,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<Router history={ hashHistory }>
+        <Route path="/" component={Index}/>
 				<Route path="/admin" component={ AdminWrapper }>
 					<IndexRoute component={Home}></IndexRoute>
 					<Route path="booking-manage" component={ BookingManage }></Route>
@@ -48,6 +51,7 @@ class App extends React.Component {
 					<Route path="ad-manage" component={AdManage}></Route>
 					<Route path="admin-manage" component={AdminManage}></Route>
 					<Route path="admin-manage/:id" component={AdminDetail} />
+          <Route path="audit-provider-info" component={AuditProviderInfo}/>
 				</Route>
 				<Route path="/provider" component={ ProviderWrapper }>
 					<IndexRoute component={Home}></IndexRoute>
