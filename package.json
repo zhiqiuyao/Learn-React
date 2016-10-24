@@ -6,13 +6,16 @@
   "scripts": {
     "start": "webpack-dev-server --content-base public/",
     "mobile": "webpack-dev-server --content-base public/ --host 192.168.199.246",
-    "release": "NODE_ENV=production webpack -p --progress"
+    "release": "NODE_ENV=production webpack -p --progress",
+    "server": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "amazeui-react": "^1.2.2",
     "axios": "^0.14.0",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.4",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-router": "^2.8.1"

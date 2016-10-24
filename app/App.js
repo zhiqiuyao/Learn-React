@@ -13,6 +13,10 @@ import AdManage from './components/ad-manage';
 import {AdminManage, AdminDetail} from './components/admin-manage';
 import StoreFront from './components/provider/store-front';
 import AuditProviderInfo from './components/admin/audit-provider-info';
+import AuditProviderPic from './components/admin/audit-provider-pic';
+
+// Provider
+import ProviderAdminManage from './components/provider/admin-manage-list';
 
 const AdminWrapper = (props) => {
 	return (
@@ -52,6 +56,7 @@ class App extends React.Component {
 					<Route path="admin-manage" component={AdminManage}></Route>
 					<Route path="admin-manage/:id" component={AdminDetail} />
           <Route path="audit-provider-info" component={AuditProviderInfo}/>
+          <Route path="audit-provider-pic" component={AuditProviderPic}/>
 				</Route>
 				<Route path="/provider" component={ ProviderWrapper }>
 					<IndexRoute component={Home}></IndexRoute>
@@ -61,7 +66,7 @@ class App extends React.Component {
 					<Route path="provider-manage" component={ProviderManage}></Route>
 					<Route path="car-owner-manage" component={CarOwnerManage}></Route>
 					<Route path="ad-manage" component={AdManage}></Route>
-					<Route path="admin-manage" component={AdminManage}></Route>
+          <Route path="admin-manage" component={ProviderAdminManage}></Route>
 					<Route path="admin-manage/:id" component={AdminDetail} />
 				</Route>
 			</Router>

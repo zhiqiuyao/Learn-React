@@ -20,25 +20,41 @@ const NavLink = React.createClass({
     );
   }
 });
-
+let adminPageTitle = "航盛车云管理后台",
+  providerPageTitle = "4S店管理后台";
 class AdminNav extends React.Component {
+  componentDidMount() {
+    document.title = adminPageTitle;
+  }
   render() {
     return (
-      <Topbar brand="航盛车云管理后台" toggleNavKey="nav" className="am-topbar-inverse">
+      <Topbar brand={adminPageTitle} toggleNavKey="nav" className="am-topbar-inverse">
         <CollapsibleNav eventKey="nav">
           <Nav topbar>
+            <li className="am-dropdown">
+              <Dropdown title="切换" btnStyle="success">
+                <li className="am-active">
+                  <Link to="/admin">航盛后台</Link>
+                </li>
+                <li>
+                  <Link to="/provider">4S店后台</Link>
+                </li>
+              </Dropdown>
+            </li>
             <NavLink to="/admin/booking-manage">预约管理</NavLink>
             <NavLink to="/admin/brand-manage">品牌管理</NavLink>
             <NavLink to="/admin/provider-manage">4S店管理</NavLink>
             <NavLink to="/admin/car-owner-manage">车主管理</NavLink>
             <NavLink to="/admin/ad-manage">广告管理</NavLink>
-            <NavLink to="/admin/audit-provider-info">4S店信息审核</NavLink>
+
+            <li className="am-dropdown">
+              <Dropdown title="审核4S店" btnStyle="primary">
+                <NavLink to="/admin/audit-provider-pic">图片</NavLink>
+                <NavLink to="/admin/audit-provider-info">信息</NavLink>
+              </Dropdown>
+            </li>
             <NavLink to="/admin/admin-manage">管理员管理</NavLink>
-            <Dropdown title="切换" btnStyle="success">
-              <Dropdown.Item header>标题</Dropdown.Item>
-              <Dropdown.Item>航盛后台</Dropdown.Item>
-              <Dropdown.Item>4S店后台</Dropdown.Item>
-            </Dropdown>
+
           </Nav>
         </CollapsibleNav>
       </Topbar>
@@ -47,9 +63,12 @@ class AdminNav extends React.Component {
 }
 
 class ProviderNav extends React.Component {
+  componentDidMount() {
+    document.title = providerPageTitle;
+  }
   render() {
     return (
-      <Topbar brand="4S店管理后台" toggleNavKey="nav" className="am-topbar-inverse">
+      <Topbar brand={providerPageTitle} toggleNavKey="nav" className="am-topbar-inverse">
         <CollapsibleNav eventKey="nav">
           <Nav topbar>
             <NavLink to="/provider/booking-manage">预约管理</NavLink>
@@ -57,9 +76,12 @@ class ProviderNav extends React.Component {
             <NavLink to="/provider/admin-manage">管理员管理</NavLink>
 
             <Dropdown title="切换" btnStyle="success">
-              <Dropdown.Item header>标题</Dropdown.Item>
-              <Dropdown.Item>航盛后台</Dropdown.Item>
-              <Dropdown.Item>4S店后台</Dropdown.Item>
+              <li>
+                <Link to="/admin">航盛后台</Link>
+              </li>
+              <li className="am-active">
+                <Link to="/provider">4S店后台</Link>
+              </li>
             </Dropdown>
           </Nav>
         </CollapsibleNav>
